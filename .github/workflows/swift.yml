@@ -24,3 +24,19 @@ jobs:
     - name: Build and test
       run: |
         xcodebuild -scheme HNSwift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build test
+  
+  artifacts:
+    runs-on: macos-latest
+    needs: build
+
+    steps:
+    - name: Download build
+      uses: actions/download-artifact@v3
+      with:
+        name: HNSwift.xcarchive
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: HNSwift.xcarchive
+        path: ${{ github.workspace }}/build/HNSwift.xcarchive
