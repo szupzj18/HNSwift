@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationView {
             List(filteredPosts) { post in
                 Button(action: {
-                    if let url = post.mobileURL {
+                    if let _ = post.mobileURL {
                         selectedPost = post
                         isShowingSafariView = true
                     }
