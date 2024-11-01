@@ -20,6 +20,8 @@
 		2B1AD5312CD4AD11000A3181 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5302CD4AD11000A3181 /* PostTests.swift */; };
 		2B1AD5352CD4B1CB000A3181 /* PostServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5342CD4B1CB000A3181 /* PostServiceTest.swift */; };
 		2B1AD5372CD4B225000A3181 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5362CD4B225000A3181 /* MockURLProtocol.swift */; };
+		2B1AD5392CD4CFB7000A3181 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */; };
+		2B1AD53B2CD4D591000A3181 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD53A2CD4D591000A3181 /* Toast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		2B1AD5302CD4AD11000A3181 /* PostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTests.swift; sourceTree = "<group>"; };
 		2B1AD5342CD4B1CB000A3181 /* PostServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostServiceTest.swift; sourceTree = "<group>"; };
 		2B1AD5362CD4B225000A3181 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemView.swift; sourceTree = "<group>"; };
+		2B1AD53A2CD4D591000A3181 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +110,12 @@
 		2B1AD4FF2CD47BA9000A3181 /* HNSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2B1AD53A2CD4D591000A3181 /* Toast.swift */,
 				2B1AD52C2CD4862D000A3181 /* SafariView.swift */,
 				2B1AD52A2CD48526000A3181 /* Post.swift */,
 				2B1AD5002CD47BA9000A3181 /* HNSwiftApp.swift */,
 				2B1AD5022CD47BA9000A3181 /* ContentView.swift */,
+				2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */,
 				2B1AD5042CD47BAA000A3181 /* Assets.xcassets */,
 				2B1AD5062CD47BAB000A3181 /* Preview Content */,
 				2B1AD52E2CD49942000A3181 /* PostService.swift */,
@@ -276,10 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1AD52F2CD49942000A3181 /* PostService.swift in Sources */,
+				2B1AD5392CD4CFB7000A3181 /* PostItemView.swift in Sources */,
 				2B1AD52D2CD4862D000A3181 /* SafariView.swift in Sources */,
 				2B1AD52B2CD48526000A3181 /* Post.swift in Sources */,
 				2B1AD5032CD47BA9000A3181 /* ContentView.swift in Sources */,
 				2B1AD5012CD47BA9000A3181 /* HNSwiftApp.swift in Sources */,
+				2B1AD53B2CD4D591000A3181 /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
