@@ -23,4 +23,4 @@ jobs:
 
     - name: Build and test
       run: |
-        xcodebuild -scheme YourSchemeName -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build test
+        xcodebuild -scheme HNSwift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build test
