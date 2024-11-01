@@ -23,7 +23,7 @@ jobs:
 
     - name: Build and test
       run: |
-        xcodebuild -scheme HNSwift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build test
+        xcodebuild -scheme HNSwift -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15' build test -verbose
   
   artifacts:
     runs-on: macos-latest
