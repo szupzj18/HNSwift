@@ -14,7 +14,10 @@ struct ContentView: View {
     @State private var selectedPost: Post?
     @State private var isShowingSafariView = false
     @State private var isShowingToast = false
+    @State private var isLoading = false
+    
     private let postService = PostService()
+    
     var body: some View {
         NavigationView {
             List(filteredPosts) { post in
@@ -30,12 +33,22 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("HN Top 10")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink {
+                        SettingsView()
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                }
+            }
             .searchable(text: $searchText, prompt: "🔍")
             .onChange(of: searchText, { oldValue, newValue in
                 self.filterPosts()
             })
             .task {
                 do {
+                    isLoading = true
                     var fetchedPosts = try await self.postService.fetchPosts()
                     fetchedPosts.sort { $0.score > $1.score }
                     self.posts = fetchedPosts
@@ -43,15 +56,16 @@ struct ContentView: View {
                 } catch {
                     print("Failed to fetch posts\(error)")
                 }
-                
+                isLoading = false
             }
             .sheet(isPresented: $isShowingSafariView) {
                 if let urlString = selectedPost?.url, let url = URL(string: urlString) {
-                    SafariView(url: url)
+                    SafariView(url: url, isLoading: $isLoading)
                 }
                 
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")
+            .loading(isLoading: isLoading)
         }
     }
     

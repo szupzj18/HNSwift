@@ -22,6 +22,9 @@
 		2B1AD5372CD4B225000A3181 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5362CD4B225000A3181 /* MockURLProtocol.swift */; };
 		2B1AD5392CD4CFB7000A3181 /* PostItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */; };
 		2B1AD53B2CD4D591000A3181 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AD53A2CD4D591000A3181 /* Toast.swift */; };
+		83645D572CD67B4D0087B106 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D562CD67B4D0087B106 /* SettingsView.swift */; };
+		83645D592CD6ACF10087B106 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D582CD6ACF10087B106 /* UserDefaults.swift */; };
+		83645D5B2CD729540087B106 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D5A2CD729540087B106 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		2B1AD5362CD4B225000A3181 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostItemView.swift; sourceTree = "<group>"; };
 		2B1AD53A2CD4D591000A3181 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		83645D562CD67B4D0087B106 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		83645D582CD6ACF10087B106 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		83645D5A2CD729540087B106 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,15 +116,15 @@
 		2B1AD4FF2CD47BA9000A3181 /* HNSwift */ = {
 			isa = PBXGroup;
 			children = (
-				2B1AD53A2CD4D591000A3181 /* Toast.swift */,
-				2B1AD52C2CD4862D000A3181 /* SafariView.swift */,
-				2B1AD52A2CD48526000A3181 /* Post.swift */,
+				83645D5F2CD729B70087B106 /* Config */,
+				83645D5E2CD7298B0087B106 /* Model */,
+				83645D5D2CD729790087B106 /* Service */,
+				83645D5C2CD7296F0087B106 /* Components */,
 				2B1AD5002CD47BA9000A3181 /* HNSwiftApp.swift */,
 				2B1AD5022CD47BA9000A3181 /* ContentView.swift */,
-				2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */,
+				83645D582CD6ACF10087B106 /* UserDefaults.swift */,
 				2B1AD5042CD47BAA000A3181 /* Assets.xcassets */,
 				2B1AD5062CD47BAB000A3181 /* Preview Content */,
-				2B1AD52E2CD49942000A3181 /* PostService.swift */,
 			);
 			path = HNSwift;
 			sourceTree = "<group>";
@@ -149,6 +155,41 @@
 				2B1AD51D2CD47BAB000A3181 /* HNSwiftUITestsLaunchTests.swift */,
 			);
 			path = HNSwiftUITests;
+			sourceTree = "<group>";
+		};
+		83645D5C2CD7296F0087B106 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2B1AD5382CD4CFB7000A3181 /* PostItemView.swift */,
+				83645D562CD67B4D0087B106 /* SettingsView.swift */,
+				2B1AD52C2CD4862D000A3181 /* SafariView.swift */,
+				2B1AD53A2CD4D591000A3181 /* Toast.swift */,
+				83645D5A2CD729540087B106 /* LoadingView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		83645D5D2CD729790087B106 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2B1AD52E2CD49942000A3181 /* PostService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		83645D5E2CD7298B0087B106 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B1AD52A2CD48526000A3181 /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83645D5F2CD729B70087B106 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,9 +323,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1AD52F2CD49942000A3181 /* PostService.swift in Sources */,
+				83645D572CD67B4D0087B106 /* SettingsView.swift in Sources */,
 				2B1AD5392CD4CFB7000A3181 /* PostItemView.swift in Sources */,
+				83645D5B2CD729540087B106 /* LoadingView.swift in Sources */,
 				2B1AD52D2CD4862D000A3181 /* SafariView.swift in Sources */,
 				2B1AD52B2CD48526000A3181 /* Post.swift in Sources */,
+				83645D592CD6ACF10087B106 /* UserDefaults.swift in Sources */,
 				2B1AD5032CD47BA9000A3181 /* ContentView.swift in Sources */,
 				2B1AD5012CD47BA9000A3181 /* HNSwiftApp.swift in Sources */,
 				2B1AD53B2CD4D591000A3181 /* Toast.swift in Sources */,
