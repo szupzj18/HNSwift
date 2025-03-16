@@ -1,4 +1,4 @@
-![icon](/assets/Icon-1024.png)
+![icon](/assets/Icon-180.png)
 
 # HNSwift Client
 
