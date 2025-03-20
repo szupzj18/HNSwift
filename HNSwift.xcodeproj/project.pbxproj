@@ -25,6 +25,9 @@
 		83645D572CD67B4D0087B106 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D562CD67B4D0087B106 /* SettingsView.swift */; };
 		83645D592CD6ACF10087B106 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D582CD6ACF10087B106 /* UserDefaults.swift */; };
 		83645D5B2CD729540087B106 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83645D5A2CD729540087B106 /* LoadingView.swift */; };
+		8398504D2D8C4F4B00D7D77B /* HNShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8398504C2D8C4F4B00D7D77B /* HNShowView.swift */; };
+		839850542D8C544900D7D77B /* HNTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839850512D8C544900D7D77B /* HNTopView.swift */; };
+		8398505B2D8C54B000D7D77B /* PostSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839850592D8C54B000D7D77B /* PostSearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,9 @@
 		83645D562CD67B4D0087B106 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		83645D582CD6ACF10087B106 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		83645D5A2CD729540087B106 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8398504C2D8C4F4B00D7D77B /* HNShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNShowView.swift; sourceTree = "<group>"; };
+		839850512D8C544900D7D77B /* HNTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNTopView.swift; sourceTree = "<group>"; };
+		839850592D8C54B000D7D77B /* PostSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +122,13 @@
 		2B1AD4FF2CD47BA9000A3181 /* HNSwift */ = {
 			isa = PBXGroup;
 			children = (
+				8398505A2D8C54B000D7D77B /* ViewModel */,
+				8398504E2D8C4F5500D7D77B /* View */,
 				83645D5F2CD729B70087B106 /* Config */,
 				83645D5E2CD7298B0087B106 /* Model */,
 				83645D5D2CD729790087B106 /* Service */,
 				83645D5C2CD7296F0087B106 /* Components */,
 				2B1AD5002CD47BA9000A3181 /* HNSwiftApp.swift */,
-				2B1AD5022CD47BA9000A3181 /* ContentView.swift */,
 				83645D582CD6ACF10087B106 /* UserDefaults.swift */,
 				2B1AD5042CD47BAA000A3181 /* Assets.xcassets */,
 				2B1AD5062CD47BAB000A3181 /* Preview Content */,
@@ -190,6 +197,24 @@
 			children = (
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		8398504E2D8C4F5500D7D77B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B1AD5022CD47BA9000A3181 /* ContentView.swift */,
+				839850512D8C544900D7D77B /* HNTopView.swift */,
+				8398504C2D8C4F4B00D7D77B /* HNShowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8398505A2D8C54B000D7D77B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				839850592D8C54B000D7D77B /* PostSearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,12 +350,15 @@
 				2B1AD52F2CD49942000A3181 /* PostService.swift in Sources */,
 				83645D572CD67B4D0087B106 /* SettingsView.swift in Sources */,
 				2B1AD5392CD4CFB7000A3181 /* PostItemView.swift in Sources */,
+				8398504D2D8C4F4B00D7D77B /* HNShowView.swift in Sources */,
 				83645D5B2CD729540087B106 /* LoadingView.swift in Sources */,
 				2B1AD52D2CD4862D000A3181 /* SafariView.swift in Sources */,
 				2B1AD52B2CD48526000A3181 /* Post.swift in Sources */,
 				83645D592CD6ACF10087B106 /* UserDefaults.swift in Sources */,
 				2B1AD5032CD47BA9000A3181 /* ContentView.swift in Sources */,
+				839850542D8C544900D7D77B /* HNTopView.swift in Sources */,
 				2B1AD5012CD47BA9000A3181 /* HNSwiftApp.swift in Sources */,
+				8398505B2D8C54B000D7D77B /* PostSearchViewModel.swift in Sources */,
 				2B1AD53B2CD4D591000A3181 /* Toast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

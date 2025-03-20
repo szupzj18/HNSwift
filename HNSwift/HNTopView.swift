@@ -1,16 +1,14 @@
 //
-//  ContentView.swift
+//  HNTopView.swift
 //  HNSwift
 //
-//  Created by ByteDance on 2024/11/1.
+//  Created on 2024/11/1.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var searchText: String = ""
-    @State private var posts: [Post] = []
-    @State private var filteredPosts: [Post] = []
+struct HNTopView: View {
+    @StateObject private var searchViewModel = PostSearchViewModel()
     @State private var selectedPost: Post?
     @State private var isShowingSafariView = false
     @State private var isShowingToast = false
@@ -20,7 +18,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List(filteredPosts) { post in
+            List(searchViewModel.filteredPosts) { post in
                 Button(action: {
                     if let _ = post.mobileURL {
                         selectedPost = post
@@ -42,17 +40,16 @@ struct ContentView: View {
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "🔍")
-            .onChange(of: searchText, { oldValue, newValue in
-                self.filterPosts()
+            .searchable(text: $searchViewModel.searchText, prompt: "🔍")
+            .onChange(of: searchViewModel.searchText, { oldValue, newValue in
+                searchViewModel.filterPosts()
             })
             .task {
                 do {
                     isLoading = true
-                    var fetchedPosts = try await self.postService.fetchPosts()
+                    var fetchedPosts = try await self.postService.fetchPosts(for: .top)
                     fetchedPosts.sort { $0.score > $1.score }
-                    self.posts = fetchedPosts
-                    self.filteredPosts = fetchedPosts
+                    searchViewModel.updatePosts(fetchedPosts)
                 } catch {
                     print("Failed to fetch posts\(error)")
                 }
@@ -62,22 +59,13 @@ struct ContentView: View {
                 if let urlString = selectedPost?.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
                 }
-                
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")
             .loading(isLoading: isLoading)
         }
     }
-    
-    func filterPosts() {
-        if searchText.isEmpty {
-            filteredPosts = posts
-        } else {
-            filteredPosts = posts.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
-        }
-    }
 }
 
 #Preview {
-    ContentView()
+    HNTopView()
 }
