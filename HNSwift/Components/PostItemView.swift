@@ -10,6 +10,7 @@ import SwiftUI
 struct PostItemView: View {
     let post: Post
     let onCopyURL: () -> Void
+    @StateObject private var bookmarkManager = BookmarkManager()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -24,7 +25,8 @@ struct PostItemView: View {
                     .foregroundColor(.cyan)
             }
             
-        }.contextMenu(menuItems: {
+        }
+        .contextMenu(menuItems: {
             if let urlString = post.url, let url = URL(string:urlString) {
                 Button(action: {
                     UIApplication.shared.open(url)
@@ -38,8 +40,17 @@ struct PostItemView: View {
                 }, label: {
                     Label("copy url", systemImage: "doc.on.doc")
                 })
+                
+                Button(action: {
+                    bookmarkManager.toggleBookmark(post)
+                }) {
+                    Label(bookmarkManager.isBookmarked(post) ? "Unbookmark" : "Bookmark",
+                          systemImage: bookmarkManager.isBookmarked(post) ? "bookmark.slash" : "bookmark")
+                }
+                .tint(.blue)
             }
         })
+        .environmentObject(bookmarkManager)
     }
 }
 

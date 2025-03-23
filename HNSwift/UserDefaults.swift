@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct UserDefaults {
+struct DefaultKeys {
     static let enableReaderMode = "enableReaderMode"
 }

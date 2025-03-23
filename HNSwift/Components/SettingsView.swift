@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @AppStorage(UserDefaults.enableReaderMode) private var enableReaderMode = false
+    @AppStorage(DefaultKeys.enableReaderMode) private var enableReaderMode = false
     var body: some View {
         List {
             Section {
