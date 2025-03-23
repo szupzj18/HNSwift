@@ -10,10 +10,11 @@ struct SafariView: UIViewControllerRepresentable {
     let url: URL
     @Binding var isLoading: Bool
     
-    @AppStorage(UserDefaults.enableReaderMode) private var enableReaderMode = false
+    @AppStorage(DefaultKeys.enableReaderMode) private var enableReaderMode = false
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
         let configuration = SFSafariViewController.Configuration()
         configuration.entersReaderIfAvailable = enableReaderMode
+        print("loading url: \(url)")
         let sfViewController = SFSafariViewController(url: url, configuration: configuration)
         sfViewController.delegate = context.coordinator
         return sfViewController

@@ -10,7 +10,6 @@ import SwiftUI
 struct HNShowView: View {
     @StateObject private var searchViewModel = PostSearchViewModel()
     @State private var selectedPost: Post?
-    @State private var isShowingSafariView = false
     @State private var isShowingToast = false
     @State private var isLoading = false
     
@@ -20,9 +19,8 @@ struct HNShowView: View {
         NavigationView {
             List(searchViewModel.filteredPosts) { post in
                 Button(action: {
-                    if let _ = post.mobileURL {
+                    if let _ = post.url {
                         selectedPost = post
-                        isShowingSafariView = true
                     }
                 }) {
                     PostItemView(post: post) {
@@ -46,8 +44,8 @@ struct HNShowView: View {
                 }
                 isLoading = false
             }
-            .sheet(isPresented: $isShowingSafariView) {
-                if let urlString = selectedPost?.url, let url = URL(string: urlString) {
+            .sheet(item: $selectedPost) { selectedPost in
+                if let urlString = selectedPost.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
                 }
             }
