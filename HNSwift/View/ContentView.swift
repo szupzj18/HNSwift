@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var bookmarkManager = BookmarkManager()
+    
     var body: some View {
         TabView {
             HNTopView()
@@ -22,6 +24,7 @@ struct ContentView: View {
                     Text("Show")
                 }
         }
+        .environmentObject(bookmarkManager)
     }
 }
 
