@@ -10,7 +10,7 @@ import SwiftUI
 struct PostItemView: View {
     let post: Post
     let onCopyURL: () -> Void
-    @StateObject private var bookmarkManager = BookmarkManager()
+    @EnvironmentObject private var bookmarkManager: BookmarkManager
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -55,7 +55,6 @@ struct PostItemView: View {
 }
 
 #Preview {
-    PostItemView(post: Post(id: 01, title: "Test Post", by: "chris", time: 0, text: "hello", url: "", score: 0, descendants: 0, kids: nil)) {
-        
-    }
+    PostItemView(post: Post(id: 01, title: "Test Post", by: "chris", time: 0, text: "hello", url: "", score: 0, descendants: 0, kids: nil)) {}
+        .environmentObject(BookmarkManager())
 }
