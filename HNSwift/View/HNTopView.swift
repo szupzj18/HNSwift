@@ -63,7 +63,7 @@ struct HNTopView: View {
                 if let urlString = post.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
                 } else {
-                    ErrorView(url: post.url ?? "")
+                    ErrorView(post: post)
                 }
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")

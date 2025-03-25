@@ -20,9 +20,7 @@ struct HNShowView: View {
         NavigationView {
             List(searchViewModel.filteredPosts) { post in
                 Button(action: {
-                    if let _ = post.url {
-                        selectedPost = post
-                    }
+                    selectedPost = post
                 }) {
                     PostItemView(post: post) {
                         isShowingToast = true
@@ -48,6 +46,8 @@ struct HNShowView: View {
             .sheet(item: $selectedPost) { selectedPost in
                 if let urlString = selectedPost.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
+                } else {
+                    ErrorView(post: selectedPost)
                 }
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")
