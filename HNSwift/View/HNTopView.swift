@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HNTopView: View {
     @StateObject private var searchViewModel = PostSearchViewModel()
-    @StateObject private var bookmarkManager = BookmarkManager()
+    @EnvironmentObject private var bookmarkManager: BookmarkManager
     @State private var selectedPost: Post?
     @State private var isShowingToast = false
     @State private var isLoading = false
@@ -63,13 +63,12 @@ struct HNTopView: View {
                 if let urlString = post.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
                 } else {
-                    ErrorView(url: post.url ?? "")
+                    ErrorView(post: post)
                 }
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")
             .loading(isLoading: isLoading)
         }
-        .environmentObject(bookmarkManager)
     }
     
     private func handlePostSelection(_ post: Post) {
@@ -86,4 +85,5 @@ struct HNTopView: View {
 
 #Preview {
     HNTopView()
+        .environmentObject(BookmarkManager()) // Add this for previews
 }

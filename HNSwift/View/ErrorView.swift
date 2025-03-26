@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct ErrorView: View {
-    var url: String
+    var post: Post
     var body: some View {
+        Image(systemName: "exclamationmark.triangle")
+            .foregroundStyle(.red)
         Text("Something went wrong :(")
             .font(.title)
             .foregroundColor(.red)
             .padding()
-        Text("Failed to load \(url)")
+        Text("Failed to load \(post.title)")
             .font(.subheadline)
             .foregroundColor(.gray)
     }
 }
 
 #Preview {
-    ErrorView(url: "https://www.google.com")
+    ErrorView(post: Post(id: 1, title: "Title", by: "https://www.google.com", time: 12345678, text: "1234567890", url: nil, score: 0, descendants: 0, kids: nil))
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HNShowView: View {
     @StateObject private var searchViewModel = PostSearchViewModel()
+    @EnvironmentObject private var bookmarkManager : BookmarkManager
     @State private var selectedPost: Post?
     @State private var isShowingToast = false
     @State private var isLoading = false
@@ -19,9 +20,7 @@ struct HNShowView: View {
         NavigationView {
             List(searchViewModel.filteredPosts) { post in
                 Button(action: {
-                    if let _ = post.url {
-                        selectedPost = post
-                    }
+                    selectedPost = post
                 }) {
                     PostItemView(post: post) {
                         isShowingToast = true
@@ -47,14 +46,18 @@ struct HNShowView: View {
             .sheet(item: $selectedPost) { selectedPost in
                 if let urlString = selectedPost.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
+                } else {
+                    ErrorView(post: selectedPost)
                 }
             }
             .toast(isShowing: $isShowingToast, message: "url copied.")
             .loading(isLoading: isLoading)
         }
+        .environmentObject(bookmarkManager)
     }
 }
 
 #Preview {
     HNShowView()
+        .environmentObject(BookmarkManager())
 }
