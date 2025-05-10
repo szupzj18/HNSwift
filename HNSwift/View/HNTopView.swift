@@ -17,7 +17,7 @@ struct HNTopView: View {
     private let postService = PostService()
     
     var body: some View {
-        NavigationView {
+        NavigationSplitView {
             List(searchViewModel.filteredPosts) { post in
                 Button(action: {
                     handlePostSelection(post)
@@ -59,15 +59,19 @@ struct HNTopView: View {
                 }
                 isLoading = false
             }
-            .sheet(item: $selectedPost) { post in
+            .toast(isShowing: $isShowingToast, message: "url copied.")
+            .loading(isLoading: isLoading)
+        } detail : {
+            if let post = selectedPost {
                 if let urlString = post.url, let url = URL(string: urlString) {
                     SafariView(url: url, isLoading: $isLoading)
                 } else {
                     ErrorView(post: post)
                 }
+            } else {
+                Text("Select a post to view")
+                    .foregroundColor(.secondary)
             }
-            .toast(isShowing: $isShowingToast, message: "url copied.")
-            .loading(isLoading: isLoading)
         }
     }
     
@@ -75,11 +79,12 @@ struct HNTopView: View {
         // Only proceed if the post has a valid URL
         guard post.url != nil else { return }
         
-        // Update on main thread with slight delay to ensure state consistency
-        DispatchQueue.main.async {
-            self.selectedPost = post
-            // Sheet will present automatically because we're using sheet(item:)
-        }
+        self.selectedPost = post;
+//        // Update on main thread with slight delay to ensure state consistency
+//        DispatchQueue.main.async {
+//            self.selectedPost = post
+//            // Sheet will present automatically because we're using sheet(item:)
+//        }
     }
 }
 
