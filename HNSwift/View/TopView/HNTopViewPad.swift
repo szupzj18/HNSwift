@@ -8,28 +8,37 @@
 import SwiftUI
 
 struct HNTopViewPad: View {
+    let postType: PostType
+    @State var selectedPost: Post?
     @State private var columnVisibility = NavigationSplitViewVisibility.automatic
-    @StateObject private var searchViewModel = PostSearchViewModel()
-    @State private var selectedPost: Post?
-    @State private var isLoading = false
-    @State private var isShowingToast = false
+    @EnvironmentObject private var bookmarkManager : BookmarkManager
     
     var body: some View {
-        let base = HNTopViewBase(
-            searchViewModel: searchViewModel,
-            selectedPost: $selectedPost,
-            isShowingToast: $isShowingToast,
-            isLoading: $isLoading
-        )
-        
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            base.listContent
+            HNViewBase(selectedPost: $selectedPost, postType: postType)
         } detail: {
-            base.detailContent
+            detailContent
         }
         .navigationSplitViewStyle(.balanced)
+        .environmentObject(bookmarkManager)
+    }
+    
+    var detailContent: some View {
+        Group {
+            if let post = selectedPost {
+                if let urlString = post.url, let url = URL(string: urlString) {
+                    SafariViewWrapper(url: url)
+                } else {
+                    ErrorView(post: post)
+                }
+            } else {
+                Text("Select a post to view")
+                    .foregroundColor(.secondary)
+            }
+        }
     }
 }
+
 #Preview {
-    HNTopViewPad()
+    HNTopViewPad(postType: .show)
 }

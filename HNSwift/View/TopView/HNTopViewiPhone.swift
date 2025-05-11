@@ -8,26 +8,20 @@
 import SwiftUI
 
 struct HNTopViewiPhone: View {
-    @StateObject private var searchViewModel = PostSearchViewModel()
+    let postType: PostType
     @State private var selectedPost: Post?
-    @State private var isLoading = false
-    @State private var isShowingToast = false
 
     var body: some View {
-        let base = HNTopViewBase(
-            searchViewModel: searchViewModel,
-            selectedPost: $selectedPost,
-            isShowingToast: $isShowingToast,
-            isLoading: $isLoading
-        )
-
         NavigationView {
-            base.listContent
+            HNViewBase(
+                selectedPost: $selectedPost,
+                postType: postType
+            )
         }
         .sheet(item: $selectedPost) { post in
             Group {
                 if let urlString = post.url, let url = URL(string: urlString) {
-                    SafariView(url: url, isLoading: $isLoading)
+                    SafariView(url: url)
                 } else {
                     ErrorView(post: post)
                 }
@@ -36,6 +30,7 @@ struct HNTopViewiPhone: View {
     }
 }
 
-#Preview {
-    HNTopViewiPhone()
-}
+//#Preview {
+//    HNTopViewiPhone(postType: .show, selectedPost: )
+//        .environmentObject(BookmarkManager())
+//}

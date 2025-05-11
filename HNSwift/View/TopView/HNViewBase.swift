@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct HNTopViewBase {
-    @ObservedObject var searchViewModel : PostSearchViewModel
+struct HNViewBase : View {
+    @StateObject var searchViewModel = PostSearchViewModel()
     @EnvironmentObject var bookmarkManager: BookmarkManager
     @Binding var selectedPost: Post?
-    @Binding var isShowingToast : Bool
-    @Binding var isLoading : Bool
+    @State var isShowingToast : Bool = false
+    @State var isLoading : Bool = false
     
+    let postType : PostType
     let postService = PostService()
+    
+    var body: some View {
+        listContent
+    }
     
     var listContent: some View {
         List(searchViewModel.filteredPosts) { post in
@@ -26,7 +31,7 @@ struct HNTopViewBase {
                 }
             }
         }
-        .navigationTitle("HN Top 10")
+        .navigationTitle(title)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 NavigationLink {
@@ -50,7 +55,7 @@ struct HNTopViewBase {
         .task {
             do {
                 isLoading = true
-                var fetchedPosts = try await self.postService.fetchPosts(for: .top)
+                var fetchedPosts = try await self.postService.fetchPosts(for: postType)
                 fetchedPosts.sort { $0.score > $1.score }
                 searchViewModel.updatePosts(fetchedPosts)
             } catch {
@@ -62,24 +67,18 @@ struct HNTopViewBase {
         .loading(isLoading: isLoading)
     }
     
-    var detailContent: some View {
-        Group {
-            if let post = selectedPost {
-                if let urlString = post.url, let url = URL(string: urlString) {
-                    SafariViewWrapper(url: url, isLoading: $isLoading)
-                } else {
-                    ErrorView(post: post)
-                }
-            } else {
-                Text("Select a post to view")
-                    .foregroundColor(.secondary)
-            }
-        }
-    }
-    
     func handlePostSelection(_ post: Post) {
         guard post.url != nil else { return }
         selectedPost = post
+    }
+    
+    var title: String {
+        switch postType {
+        case .show:
+            "HN Show"
+        case .top:
+            "HN Top 10"
+        }
     }
 }
 
