@@ -8,7 +8,6 @@ import WebKit
 struct SafariView: UIViewControllerRepresentable {
     
     let url: URL
-    @Binding var isLoading: Bool
     
     @AppStorage(DefaultKeys.enableReaderMode) private var enableReaderMode = false
     func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
@@ -36,7 +35,6 @@ struct SafariView: UIViewControllerRepresentable {
         }
         
         func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
-            self.parent.isLoading = false
             print("did finish initial load.")
         }
         
@@ -46,6 +44,16 @@ struct SafariView: UIViewControllerRepresentable {
         }
     }
     
+}
+
+// 添加一个 SwiftUI 视图包装器
+struct SafariViewWrapper: View {
+    let url: URL
+    
+    var body: some View {
+        SafariView(url: url)
+            .id(url)
+    }
 }
 
 class WebCacheManager {

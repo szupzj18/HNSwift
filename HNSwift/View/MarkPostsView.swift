@@ -45,7 +45,7 @@ struct MarkPostsView: View {
         .navigationTitle("Bookmarks")
         .sheet(item: $selectedPost) { post in 
             if let urlString = post.url, let url = URL(string: urlString) {
-                SafariView(url: url, isLoading: $isLoading)
+                SafariView(url: url)
             }
         }
         .toast(isShowing: $isShowingToast, message: "url copied.")

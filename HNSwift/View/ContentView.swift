@@ -12,13 +12,13 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            HNTopView()
+            HNFeedView(postType: .top)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Top")
                 }
             
-            HNShowView()
+            HNFeedView(postType: .show)
                 .tabItem {
                     Image(systemName: "eye.fill")
                     Text("Show")
