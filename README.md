@@ -16,7 +16,12 @@ you can now [install beta test](https://testflight.apple.com/join/6WBYaKWs).
 ## Feature
 
 - pull the latest top 10 HackerNews posts.
-- readmode (backed by safari reader)
+- pull the latest top 10 HN show posts.
+- reader mode (backed by safari reader)
+- [wip] iPad split mode.
+- [futrue] random.
+
+> Why we don't have "loadmore"? Because I don't want to doom scrolling and end up spending too much time in HackerNews (as I used to).
 
 ## Demo
 
