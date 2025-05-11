@@ -14,9 +14,9 @@ struct HNFeedView: View {
     var body: some View {
         Group {
             if UIDevice.current.userInterfaceIdiom == .pad {
-                HNTopViewPad(postType: postType)
+                HNFeedViewPad(postType: postType)
             } else {
-                HNTopViewiPhone(postType: postType)
+                HNFeedViewiPhone(postType: postType)
             }
         }
         .environmentObject(bookmarkManager)

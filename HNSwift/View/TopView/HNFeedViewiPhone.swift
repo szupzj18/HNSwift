@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct HNTopViewiPhone: View {
+struct HNFeedViewiPhone: View {
     let postType: PostType
     @State private var selectedPost: Post?
 
     var body: some View {
         NavigationView {
-            HNViewBase(
+            HNFeedViewBase(
                 selectedPost: $selectedPost,
                 postType: postType
             )

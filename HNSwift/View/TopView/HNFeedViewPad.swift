@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HNTopViewPad: View {
+struct HNFeedViewPad: View {
     let postType: PostType
     @State var selectedPost: Post?
     @State private var columnVisibility = NavigationSplitViewVisibility.automatic
@@ -15,7 +15,7 @@ struct HNTopViewPad: View {
     
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            HNViewBase(selectedPost: $selectedPost, postType: postType)
+            HNFeedViewBase(selectedPost: $selectedPost, postType: postType)
         } detail: {
             detailContent
         }
@@ -40,5 +40,5 @@ struct HNTopViewPad: View {
 }
 
 #Preview {
-    HNTopViewPad(postType: .show)
+    HNFeedViewPad(postType: .show)
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HNViewBase : View {
+struct HNFeedViewBase : View {
     @StateObject var searchViewModel = PostSearchViewModel()
     @EnvironmentObject var bookmarkManager: BookmarkManager
     @Binding var selectedPost: Post?
