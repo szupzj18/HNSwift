@@ -48,6 +48,17 @@ struct SafariView: UIViewControllerRepresentable {
     
 }
 
+// 添加一个 SwiftUI 视图包装器
+struct SafariViewWrapper: View {
+    let url: URL
+    @Binding var isLoading: Bool
+    
+    var body: some View {
+        SafariView(url: url, isLoading: $isLoading)
+            .id(url)
+    }
+}
+
 class WebCacheManager {
     static let shared = WebCacheManager()
     private let cache = NSCache<NSURL, WKWebView>()
