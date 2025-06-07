@@ -36,3 +36,6 @@ Screenshot
     <img src="./doc/img/iphone.jpeg" style="height:400; width:auto; object-fit:contain;"/>
     <img src="./doc/img/ipad-split.png" style="height:400; width:auto; object-fit:contain;" />
 </div>
+
+## Documentation
+For an architectural overview of the project, see [Arch.md](Arch.md).
