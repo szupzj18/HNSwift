@@ -24,7 +24,7 @@ you can now [install beta test](https://testflight.apple.com/join/6WBYaKWs).
 
 ## Demo
 
-Screen shot
+Screenshot
 
 <!-- 并排等高图片（Markdown 中可用） -->
 <div style="
