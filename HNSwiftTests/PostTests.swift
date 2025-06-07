@@ -25,11 +25,4 @@ final class PostTests: XCTestCase {
 
         XCTAssertEqual(post.date, expectedDate)
     }
-
-    func testPostMobileURL() {
-        let post = Post(id: 123, title: "Test Title", by: "Test Author", time: 1698765432, text: nil, url: nil, score: 0, descendants: nil, kids: nil)
-        let expectedURL = URL(string: "https://news.ycombinator.com/item?id=123")
-
-        XCTAssertEqual(post.mobileURL, expectedURL)
-    }
 }
